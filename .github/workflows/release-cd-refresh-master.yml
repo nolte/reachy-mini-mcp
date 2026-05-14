@@ -1,0 +1,25 @@
+name: Release Deliver to Master
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: |
+          Tag to fast-forward main to (e.g. v0.1.0). Manual escape hatch
+          when the release:published cascade did not fire under GITHUB_TOKEN.
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  refresh_presentation_branch:
+    uses: nolte/gh-plumbing/.github/workflows/reusable-release-cd-refresh-master.yml@v1.1.16
+    with:
+      from_branch: ${{ inputs.tag || github.event.ref }}
+      target_branch: main
+    secrets:
+      token: ${{ secrets.GITHUB_TOKEN }}

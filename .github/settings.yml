@@ -1,0 +1,8 @@
+_extends: nolte/gh-plumbing:.github/commons-settings.yml
+
+repository:
+  name: reachy-mini-mcp
+  description: Model Context Protocol server for Reachy Mini — REST wrapper around the Pollen daemon.
+  homepage: https://github.com/nolte/reachy-mini-mcp
+  topics: mcp, model-context-protocol, reachy-mini
+  default_branch: develop

@@ -1,0 +1,23 @@
+name: Release Deliver Docs
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  id-token: write
+  pages: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  publish_docs:
+    uses: nolte/gh-plumbing/.github/workflows/reusable-mkdocs.yaml@v1.1.16
+    with:
+      requirements: docs/requirements.txt
+    secrets:
+      token: ${{ secrets.GITHUB_TOKEN }}
