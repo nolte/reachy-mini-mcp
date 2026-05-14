@@ -1,0 +1,41 @@
+site_name: reachy-mini-mcp
+site_description: Model Context Protocol server for Reachy Mini — REST wrapper around the Pollen daemon.
+site_url: https://nolte.github.io/reachy-mini-mcp/
+repo_url: https://github.com/nolte/reachy-mini-mcp
+repo_name: nolte/reachy-mini-mcp
+edit_uri: edit/develop/docs/
+
+docs_dir: docs
+
+theme:
+  name: material
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.indexes
+    - content.code.copy
+    - content.action.edit
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
