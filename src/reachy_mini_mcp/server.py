@@ -87,13 +87,9 @@ def get_motor_status() -> dict[str, Any]:
     """
     daemon_url = _daemon_url()
     try:
-        mode_response = httpx.get(
-            f"{daemon_url}/api/motors/status", timeout=READ_TIMEOUT_S
-        )
+        mode_response = httpx.get(f"{daemon_url}/api/motors/status", timeout=READ_TIMEOUT_S)
         mode_response.raise_for_status()
-        state_response = httpx.get(
-            f"{daemon_url}/api/state/full", timeout=READ_TIMEOUT_S
-        )
+        state_response = httpx.get(f"{daemon_url}/api/state/full", timeout=READ_TIMEOUT_S)
         state_response.raise_for_status()
     except httpx.HTTPError as exc:
         raise RuntimeError(f"daemon unreachable at {daemon_url}: {exc}") from exc
@@ -105,20 +101,14 @@ def get_motor_status() -> dict[str, Any]:
     head_joints = state.get("head_joints")
     if head_joints is not None:
         for index, position in enumerate(head_joints):
-            motors.append(
-                {"id": f"head_joint_{index}", "group": "head", "position_rad": position}
-            )
+            motors.append({"id": f"head_joint_{index}", "group": "head", "position_rad": position})
     body_yaw = state.get("body_yaw")
     if body_yaw is not None:
         motors.append({"id": "body_yaw", "group": "body", "position_rad": body_yaw})
     antennas = state.get("antennas_position")
     if antennas is not None and len(antennas) == 2:
-        motors.append(
-            {"id": "antenna_left", "group": "antenna", "position_rad": antennas[0]}
-        )
-        motors.append(
-            {"id": "antenna_right", "group": "antenna", "position_rad": antennas[1]}
-        )
+        motors.append({"id": "antenna_left", "group": "antenna", "position_rad": antennas[0]})
+        motors.append({"id": "antenna_right", "group": "antenna", "position_rad": antennas[1]})
 
     return {
         "control_mode": control_mode,
