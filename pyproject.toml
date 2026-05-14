@@ -4,13 +4,25 @@ version = "0.0.1"
 description = "Model Context Protocol server for Reachy Mini — REST wrapper around the Pollen daemon."
 readme = "README.md"
 requires-python = ">=3.12"
+license = { text = "MIT" }
 authors = [
     { name = "nolte", email = "nolte07@gmail.com" },
 ]
-dependencies = [
-    "mcp>=1.2.0",
-    "httpx>=0.27.0",
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: POSIX :: Linux",
+    "Topic :: Scientific/Engineering",
 ]
+
+[project.urls]
+Homepage = "https://github.com/nolte/reachy-mini-mcp"
+Source = "https://github.com/nolte/reachy-mini-mcp"
+Issues = "https://github.com/nolte/reachy-mini-mcp/issues"
+
+# Runtime dependencies live in requirements.txt, not here, per
+# spec/project/project-structure §Python-Entwicklung.
 
 [build-system]
 requires = ["hatchling"]
@@ -19,4 +31,14 @@ build-backend = "hatchling.build"
 [tool.hatch.build.targets.wheel]
 packages = ["src/reachy_mini_mcp"]
 
-[tool.uv]
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W", "UP", "B"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+asyncio_mode = "auto"
