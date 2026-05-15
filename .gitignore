@@ -22,5 +22,9 @@ dist/
 # MkDocs build output
 site/
 
+# uv generates this when `uv run` builds the project; we pin via
+# requirements*.txt instead, so the lockfile stays local
+uv.lock
+
 # Audit / triage artefacts written by skills
 .audits/
