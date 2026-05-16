@@ -25,7 +25,11 @@ jobs:
       - name: Install Task
         uses: arduino/setup-task@v2
         with:
-          version: 3.x
+          # Pinned to the latest stable Task release because
+          # arduino/setup-task's `3.x` resolution currently picks a
+          # non-existent v3.51.0 tag and aborts with HTTP 404. Track the
+          # upstream lookup; bump deliberately via Renovate.
+          version: 3.50.0
           repo-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install project dependencies
