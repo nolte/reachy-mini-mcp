@@ -1,6 +1,6 @@
 [project]
 name = "reachy-mini-mcp"
-version = "0.0.1"
+version = "0.1.1"
 description = "Model Context Protocol server for Reachy Mini — REST wrapper around the Pollen daemon."
 readme = "README.md"
 requires-python = ">=3.12"
