@@ -1,9 +1,5 @@
 name: Docker Lint & Build
 
-# TODO: once nolte/gh-plumbing cuts a release containing
-# reusable-docker-lint-build.yaml, repin the `uses:` reference below from
-# @develop to the matching @vX.Y.Z tag, per the project-structure spec.
-
 on:
   pull_request:
     branches: [develop, main]
@@ -20,7 +16,7 @@ permissions:
 
 jobs:
   lint_build:
-    uses: nolte/gh-plumbing/.github/workflows/reusable-docker-lint-build.yaml@develop
+    uses: nolte/gh-plumbing/.github/workflows/reusable-docker-lint-build.yaml@v1.1.17
     with:
       context: "."
       dockerfile: Dockerfile
