@@ -4,14 +4,17 @@ FROM ghcr.io/astral-sh/uv:python3.12-bookworm-slim AS builder
 
 ENV UV_LINK_MODE=copy \
     UV_COMPILE_BYTECODE=1 \
-    UV_PROJECT_ENVIRONMENT=/app/.venv
+    VIRTUAL_ENV=/app/.venv
 
 WORKDIR /app
 
+COPY requirements.txt ./
+RUN uv venv /app/.venv \
+ && uv pip install --python /app/.venv/bin/python -r requirements.txt
+
 COPY pyproject.toml README.md ./
 COPY src ./src
-
-RUN uv sync --no-dev
+RUN uv pip install --python /app/.venv/bin/python --no-deps .
 
 
 FROM python:3.12-slim-bookworm AS runtime

@@ -1,0 +1,17 @@
+{
+  "mcpServers": {
+    "reachy-mini": {
+      "command": "docker",
+      "args": [
+        "run", "--rm", "-i",
+        "--network", "host",
+        "-e", "REACHY_MINI_DAEMON_URL",
+        "-v", "${HOME}/.cache/reachy-mini-mcp:/home/mcp/.cache/reachy-mini-mcp",
+        "reachy-mini-mcp:dev"
+      ],
+      "env": {
+        "REACHY_MINI_DAEMON_URL": "http://127.0.0.1:8000"
+      }
+    }
+  }
+}

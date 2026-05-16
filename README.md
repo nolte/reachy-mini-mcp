@@ -1,5 +1,10 @@
 # reachy-mini-mcp
 
+[![CI](https://github.com/nolte/reachy-mini-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/nolte/reachy-mini-mcp/actions/workflows/ci.yml)
+[![Release Drafter](https://github.com/nolte/reachy-mini-mcp/actions/workflows/release-drafter.yml/badge.svg)](https://github.com/nolte/reachy-mini-mcp/actions/workflows/release-drafter.yml)
+[![Docs](https://github.com/nolte/reachy-mini-mcp/actions/workflows/release-cd-deliver-docs.yml/badge.svg)](https://github.com/nolte/reachy-mini-mcp/actions/workflows/release-cd-deliver-docs.yml)
+[![Docker](https://github.com/nolte/reachy-mini-mcp/actions/workflows/release-cd-deliver-docker.yml/badge.svg)](https://github.com/nolte/reachy-mini-mcp/actions/workflows/release-cd-deliver-docker.yml)
+
 Model Context Protocol (MCP) server for [Reachy Mini](https://github.com/pollen-robotics/reachy_mini) — a thin REST wrapper around the Pollen daemon, exposed over MCP so any MCP-capable LLM frontend (Claude Desktop, Claude Code, Cursor) can read robot state and trigger motion without generating ad-hoc Python.
 
 **Distribution form:** Docker container, stdio transport.

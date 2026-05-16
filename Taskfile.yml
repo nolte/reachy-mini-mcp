@@ -1,0 +1,46 @@
+version: "3"
+
+vars:
+  VENV: .venv
+  PY: "{{.VENV}}/bin/python"
+  UV: uv
+
+tasks:
+  default:
+    cmds:
+      - task --list-all
+
+  install:
+    desc: Create local virtual env and install runtime + dev dependencies.
+    cmds:
+      - "{{.UV}} venv {{.VENV}}"
+      - "{{.UV}} pip install --python {{.PY}} -r requirements.txt"
+      - "{{.UV}} pip install --python {{.PY}} -r requirements-dev.txt"
+
+  lint:
+    desc: Run ruff lint and format checks.
+    cmds:
+      - "{{.UV}} run --python {{.PY}} ruff check ."
+      - "{{.UV}} run --python {{.PY}} ruff format --check ."
+
+  test:
+    desc: Run pytest.
+    cmds:
+      - "{{.UV}} run --python {{.PY}} pytest"
+
+  docs:
+    desc: Build MkDocs site in strict mode.
+    cmds:
+      - "{{.UV}} run --python {{.PY}} mkdocs build --strict"
+
+  ci:
+    desc: Run all checks (lint, test, docs) as the CI workflow does.
+    cmds:
+      - task: lint
+      - task: test
+      - task: docs
+
+  docker:build:
+    desc: Build the production container image.
+    cmds:
+      - docker build -t reachy-mini-mcp:dev .

@@ -1,0 +1,25 @@
+name: Release Deliver Docker
+
+# TODO: once nolte/gh-plumbing cuts a release containing
+# reusable-docker-publish.yaml, repin the `uses:` reference below from
+# @develop to the matching @vX.Y.Z tag, per the project-structure spec.
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  publish:
+    uses: nolte/gh-plumbing/.github/workflows/reusable-docker-publish.yaml@develop
+    with:
+      image_name: reachy-mini-mcp
+      context: "."
+      dockerfile: Dockerfile
+      platforms: linux/amd64,linux/arm64
+    secrets:
+      token: ${{ secrets.GITHUB_TOKEN }}
