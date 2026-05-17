@@ -1,3 +1,6 @@
+# Repository settings synced by the Probot Settings App.
+# Defaults come from nolte/gh-plumbing:.github/commons-settings.yml;
+# overrides below are kept narrow to repo-specific identity fields.
 _extends: nolte/gh-plumbing:.github/commons-settings.yml
 
 repository:
