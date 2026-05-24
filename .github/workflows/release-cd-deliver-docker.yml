@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   publish:
-    uses: nolte/gh-plumbing/.github/workflows/reusable-docker-publish.yaml@v1.1.17
+    uses: nolte/gh-plumbing/.github/workflows/reusable-docker-publish.yaml@v1.1.19
     with:
       image_name: reachy-mini-mcp
       context: "."
