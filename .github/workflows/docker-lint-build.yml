@@ -16,7 +16,7 @@ permissions:
 
 jobs:
   lint_build:
-    uses: nolte/gh-plumbing/.github/workflows/reusable-docker-lint-build.yaml@v1.1.17
+    uses: nolte/gh-plumbing/.github/workflows/reusable-docker-lint-build.yaml@v1.1.19
     with:
       context: "."
       dockerfile: Dockerfile
