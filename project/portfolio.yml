@@ -1,0 +1,17 @@
+# Portfolio manifest for nolte/reachy-mini-mcp.
+# Schema: spec/portfolio/portfolio-management/ §Capability inventory per repository
+# Audience references resolve against AUDIENCES.md at the repo root.
+
+capabilities:
+  - name: reachy-mini-mcp-server
+    description: >-
+      A Model Context Protocol server that wraps the Pollen Reachy Mini daemon
+      behind a REST interface, exposing the robot's behaviours to MCP clients
+      and LLM end users.
+    audience:
+      - "MCP clients"
+      - "Reachy Mini owners / developers"
+    status: active
+    rationale: >-
+      This repository owns the MCP/REST exposure of the Reachy Mini in the
+      portfolio, decoupling LLM/MCP control from the underlying Pollen daemon.
