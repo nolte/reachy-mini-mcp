@@ -15,3 +15,6 @@ capabilities:
     rationale: >-
       This repository owns the MCP/REST exposure of the Reachy Mini in the
       portfolio, decoupling LLM/MCP control from the underlying Pollen daemon.
+
+    peers:
+      - "reachy-mini-app:reachy-mini-behavior-app"
