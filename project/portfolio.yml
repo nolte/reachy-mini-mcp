@@ -18,3 +18,50 @@ capabilities:
 
     peers:
       - "reachy-mini-app:reachy-mini-behavior-app"
+
+# tech_stack: repo-specific deltas vs the inherited portfolio baseline
+# (portfolio/tech-stack.yml). Schema: spec/portfolio/tech-stack/ §Per-repository block.
+tech_stack:
+  additions:
+    - name: python
+      kind: language
+      group: build-tooling
+      version: ">=3.12"
+      role: Implementation language for the MCP/REST server.
+      status: active
+      lifecycle: all
+      source_of_truth: pyproject.toml
+      rationale: >-
+        acknowledged-missing-signal: python is the server's runtime language; the closed group
+        enum has no application-runtime bucket, so it is grouped under build-tooling as the
+        closest fit (operator may regroup).
+    - name: mcp
+      kind: framework
+      group: build-tooling
+      version: ">=1.2.0"
+      role: Model Context Protocol SDK the server is built on, exposing the Reachy Mini daemon to MCP clients.
+      status: active
+      lifecycle: runtime
+      source_of_truth: requirements.txt
+    - name: ruff
+      kind: lint
+      group: quality
+      role: Python linter and formatter gating code quality.
+      status: active
+      lifecycle: development
+      source_of_truth: pyproject.toml
+    - name: pytest
+      kind: test
+      group: quality
+      role: Test runner for the server's test suite.
+      status: active
+      lifecycle: development
+      source_of_truth: pyproject.toml
+    - name: docker-image
+      kind: deploy-target
+      group: automation
+      role: Container image packaging the MCP server for deployment.
+      status: active
+      lifecycle: runtime
+      source_of_truth: Dockerfile
+      rationale: "kind deploy-target is operator-curated per tech-stack-discovery; signal is the Dockerfile."
