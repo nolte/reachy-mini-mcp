@@ -11,6 +11,20 @@ permissions:
 
 jobs:
   publish:
+    permissions:
+      contents: read
+      packages: write
+      # Required from the gh-plumbing release that adds platform-signed build
+      # provenance (nolte/gh-plumbing#399). The called workflow's job requests
+      # these, and a caller that does not grant them does NOT get a reduced
+      # token -- GitHub refuses to start the workflow at all, with
+      # startup_failure and zero jobs. Granted here ahead of that release so
+      # the delivery keeps running across the bump.
+      #
+      # Job level, never workflow level: `id-token` is a signing identity and
+      # spec/project/github-actions-best-practices §H forbids widening it.
+      id-token: write
+      attestations: write
     uses: nolte/gh-plumbing/.github/workflows/reusable-docker-publish.yaml@v1.1.19
     with:
       image_name: reachy-mini-mcp
